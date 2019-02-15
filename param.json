@@ -1,0 +1,95 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+    "contentVersion": "1.0.0.0",
+
+"parameters": {
+    "resourcePrefix": {
+        "value": "extvnet"
+    },
+        "resourceSuffix": {
+          "value": "1"
+        },
+        "location": {
+          "value": "eastus2"
+        },
+        "virtualMachineName": {
+          "value": "extvnet-vm"
+        },
+        "virtualMachineSize": {
+          "value": "Standard_A2"
+        },
+        "adminUsername": {
+          "value": "gavsadmin"
+        },
+        "adminPassword": {
+          "value": "gavs_123"
+        },
+        "vmImagePublisher": {
+          "value": "OpenLogic"
+        },
+        "vmImageOffer": {
+          "value": "CentOS"
+        },
+        "vmImageSKU": {
+          "value": "7.4"
+        },
+        "extnPublisher": {
+          "value": "Microsoft.Azure.Extensions"
+        },
+        "extnType": {
+          "value": "CustomScript"
+        },
+        "extnTypeVersion": {
+          "value": "2.0"
+        },
+        "scriptFileParams": {
+          "value": "Tomcat"
+        },
+        "scriptFileURI": {
+          "value": "https://kpteststorage1.blob.core.windows.net/linux-shellscript-new/Azure-Linux-Shellscript.sh"
+        },
+        "osProfileParams": {
+          "value": {
+            "computerName": "extvnet-vm",
+            "adminUsername": "gavsadmin",
+            "adminPassword": "gavs_123",
+            "linuxConfiguration": {
+              "disablePasswordAuthentication": false
+            }
+          }
+        },
+        "cmdExecutePrefix": {
+          "value": "sh"
+        },
+        "vmNetworkSecurityRules": {
+          "value": {
+            "securityRules": [
+              {
+                "name": "SSH",
+                "properties": {
+                  "priority": 100,
+                  "protocol": "TCP",
+                  "access": "Allow",
+                  "direction": "Inbound",
+                  "sourceApplicationSecurityGroups": [],
+                  "destinationApplicationSecurityGroups": [],
+                  "sourceAddressPrefix": "*",
+                  "sourcePortRange": "*",
+                  "destinationAddressPrefix": "*",
+                  "destinationPortRange": "22"
+                }
+              }
+            ]
+          }
+        },
+        "existingVnetResourceGroupName": {
+          "value": "friday2-rg"          
+        },
+        "existingVnetName": {
+          "value": "friday2-vnet"
+        },
+        "existingVirtualNetworkSubnet": {
+          "value": "friday2-subnet"
+        }
+      }    
+    }
